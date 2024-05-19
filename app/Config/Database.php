@@ -15,23 +15,20 @@ class Database
 
     function __construct()
     {
-        $this->conn = $this->connectDB();
-        if ($this->conn) {
-            echo "Database connected";
+        try {
+            $this->createConnection();
+            // echo "Database connected";
+        } catch (PDOException $e) {
+            echo "Failed to connect to the database: " . $e->getMessage();
+            exit;
         }
         date_default_timezone_set('Asia/Kolkata');
     }
 
-    private function connectDB()
+    private function createConnection()
     {
-        try {
-            $conn = new PDO("mysql:host={$this->host};dbname={$this->database}", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conn;
-        } catch (PDOException $e) {
-            echo "Failed to connect to the database: " . $e->getMessage();
-            exit();
-        }
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->database}", $this->username, $this->password);
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     function __destruct()
