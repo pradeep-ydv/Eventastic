@@ -1,0 +1,16 @@
+{
+    "name": "eventastic/eventastic",
+    "description": "Booking Event Website Using Core PHP.",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pradeep Yadav",
+            "email": "softkiller706@gmail.com"
+        }
+    ],
+    "require": {}
+}
