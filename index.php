@@ -1,7 +1,7 @@
 <?php
 // Define the root path of the project
 define("ROOT_PATH", __DIR__ . DIRECTORY_SEPARATOR);
-// echo ROOT_PATH;exit;
+
 // Include the Composer autoload file for managing dependencies
 require_once(ROOT_PATH . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
 
@@ -26,6 +26,6 @@ use App\Services\Route;
 
 $routes = new Route();
 
-require_once(ROOT_PATH . "/routes/route.php");
+require_once(ROOT_PATH . "routes/route.php");
 
 $routes->handle();

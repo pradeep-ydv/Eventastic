@@ -4,14 +4,14 @@ namespace App\Services;
 
 class Route
 {
-    static $routes = [];
+    private static $routes = [];
     private static $controllerNamespace = "App\Controllers\\";
-    public static function add($url, $controller, $action, $method = "GET", $middleware = array())
+    public static function add($uri, $controller, $action, $method = "GET", $middleware = [])
     {
 
         self::$routes[] = [
             "method" => $method,
-            "url" => $url,
+            "uri" => $uri,
             "controller" => $controller,
             "action" => $action,
             "middleware" => $middleware
@@ -20,22 +20,19 @@ class Route
 
     public static function handle()
     {
-
         $requestURI = $_SERVER["REQUEST_URI"];
         $requestMethod = $_SERVER["REQUEST_METHOD"];
 
         foreach (self::$routes as $route) {
-
-            if ($route["url"] === $requestURI && $route["method"] === $requestMethod) {
+            if ($route["uri"] === $requestURI && $route["method"] === $requestMethod) {
                 $controllerClass = self::$controllerNamespace . $route["controller"];
                 $action = $route["action"];
 
                 $controller = new $controllerClass();
-
-                $controller->$route["method"];
+                $controller->$action();
                 return;
             }
-            echo "404 - Page not found";
         }
+        echo "404 - Page not found";
     }
 }
