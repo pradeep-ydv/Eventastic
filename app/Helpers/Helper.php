@@ -72,7 +72,7 @@ if (!function_exists('include_css_cdn')) {
         global $css_cdn_urls;
         if (isset($css_cdn_urls) && is_array($css_cdn_urls)) {
             foreach ($css_cdn_urls as $url) {
-                echo '<link href="' . base_url($url) . '" rel="stylesheet" type="text/css">' . "\n";
+                // echo '<link href="' . base_url($url) . '" rel="stylesheet" type="text/css">' . "\n";
             }
         }
     }
@@ -95,7 +95,7 @@ if (!function_exists('include_js_cdn')) {
         global $js_cdn_urls;
         if (isset($js_cdn_urls) && is_array($js_cdn_urls)) {
             foreach ($js_cdn_urls as $url) {
-                echo '<script src="' . base_url($url) . '"></script>' . "\n";
+                // echo '<script src="' . base_url($url) . '"></script>' . "\n";
             }
         }
     }
