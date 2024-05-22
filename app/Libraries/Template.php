@@ -4,17 +4,17 @@ namespace App\Libraries;
 
 class Template
 {
-	var $template_data = array();
+    public array $templateData = [];
 
-	public	function set($content_area, $value)
-	{
-		$this->template_data[$content_area] = $value;
-	}
+    public function set(string $contentArea, mixed $value): void
+    {
+        $this->templateData[$contentArea] = $value;
+    }
 
-	public	function render($template = '', $name = '', $view = '', $view_data = array(), $return = FALSE)
-	{
-		$this->set($name, view($view, $view_data));
+    public function render(string $template = '', string $name = '', string $view = '', array $viewData = [], bool $return = false): void
+    {
+        $this->set($name, view($view, $viewData));
 
-		echo view($template, $this->template_data);
-	}
+        echo view($template, $this->templateData);
+    }
 }
