@@ -2,5 +2,14 @@
 
 use App\Services\Route;
 
-Route::add("/", "HomeController", "index", "GET");
-Route::add("login", "UsersController", "index", "GET");
+// Define routes
+Route::get("/", "HomeController", "index");
+Route::get("login", "UsersController", "index");
+Route::post("login", "UsersController", "login");
+
+// Middleware group for routes that require authentication
+// Route::group(['App\Middleware\AuthMiddleware'], function () {
+//     Route::get("dashboard", "DashboardController", "index");
+//     Route::get("profile", "ProfileController", "index");
+//     Route::get("settings", "SettingsController", "index");
+// });
