@@ -1,5 +1,21 @@
 <?php
 
+use App\Config\ViewRenderer;
+
+function view(string $name, array $data = [], array $options = []): string
+{
+    // Path to the views directory
+    $viewPath = __DIR__ . '/../Views';
+
+    // Create an instance of the ViewRenderer
+    $renderer = new ViewRenderer($viewPath);
+
+    // Handle options and saveData as needed
+    $saveData = $options['saveData'] ?? false;
+
+    return $renderer->setData($data, 'raw')->render($name, $options, $saveData);
+}
+
 if (!function_exists('sanitize_string')) {
     function sanitize_string($var = '')
     {
